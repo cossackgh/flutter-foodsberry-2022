@@ -266,6 +266,8 @@ class CardProductN1 extends ConsumerWidget {
                                     child: TabBarView(
                                       children: [
                                         GridView.count(
+                                            physics:
+                                                const BouncingScrollPhysics(),
                                             childAspectRatio: 2 / 1,
                                             crossAxisCount: 2,
                                             children: [

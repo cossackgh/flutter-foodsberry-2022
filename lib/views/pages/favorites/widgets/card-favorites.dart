@@ -115,7 +115,7 @@ class CardFavorite extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                  height: 165,
+                  height: 190,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.max,
@@ -216,7 +216,7 @@ class CardFavorite extends StatelessWidget {
                                   ),
                                   dataCardProduct!.sku!.length > 1
                                       ? SizedBox(
-                                          height: 110,
+                                          height: 120,
                                           child: DefaultTabController(
                                               length: 2,
                                               child: Builder(builder:
@@ -417,7 +417,7 @@ class CardFavorite extends StatelessWidget {
                                                               physics:
                                                                   const BouncingScrollPhysics(),
                                                               childAspectRatio:
-                                                                  4.3,
+                                                                  3.3,
                                                               crossAxisCount: 2,
                                                               children: [
                                                                 dataCardProduct!
