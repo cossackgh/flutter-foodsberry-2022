@@ -4,7 +4,10 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 const String CoreUrl =
-    kDebugMode ? "https://dev-build.foodsberry.ru" : "https://foodsberry.ru";
+    //kDebugMode ? "https://dev-build.foodsberry.ru" : "https://foodsberry.ru";
+    kDebugMode
+        ? "https://dev-build.foodsberry.ru"
+        : "https://dev-build.foodsberry.ru";
 /* const String CoreUrl =
     kDebugMode ? "https://foodsberry.ru" : "https://foodsberry.ru"; */
 

@@ -588,9 +588,57 @@ class CardProductN1 extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: 50,
+                  padding: EdgeInsets.only(left: 8),
+                  //width: 50,
                   height: 20,
-                  color: FSColors.baseFSColor,
+                  child: Row(
+                    children: [
+                      Visibility(
+                        visible: dataCardProduct!.discount!.round() != 0,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 1),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.pink,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.zero,
+                                  topRight: Radius.zero,
+                                  bottomRight: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10)),
+                            ),
+                            alignment: Alignment.topCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 6, vertical: 2),
+                              child: Text(
+                                  '-${dataCardProduct!.discount!.round()}%',
+                                  style: CustomTextStyle.cardProductTopStick),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 1),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            color: FSColors.baseFSColor,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.zero,
+                                topRight: Radius.zero,
+                                bottomRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10)),
+                          ),
+                          alignment: Alignment.topCenter,
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 2),
+                            child: Text('хит',
+                                style: CustomTextStyle.cardProductTopStick),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   width: 50,

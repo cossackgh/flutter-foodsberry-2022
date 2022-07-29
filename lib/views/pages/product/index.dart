@@ -386,7 +386,6 @@ class ProductPage extends ConsumerWidget {
                                       ? Scrollbar(
                                           controller: _controllerOne,
                                           thickness: 4,
-                                          //  thumbVisibility: true,
                                           trackVisibility: true,
                                           child: SingleChildScrollView(
                                             controller: ScrollController(),
