@@ -67,7 +67,7 @@ class FSImageProductCarouselSlider extends StatelessWidget {
                         //  height: 350,
                         width: MediaQuery.of(context).size.width * 0.6,
                         child: CachedNetworkImage(
-                          imageUrl: item!.image!,
+                          imageUrl: item.image!,
                           fit: BoxFit.contain,
 /*                                   width: constraints.maxWidth - 10,
                                   height: constraints.maxWidth - 2, */

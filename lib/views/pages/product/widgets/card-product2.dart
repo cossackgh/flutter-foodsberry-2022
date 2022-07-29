@@ -584,6 +584,7 @@ class CardProductN1 extends ConsumerWidget {
               ],
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
@@ -593,7 +594,7 @@ class CardProductN1 extends ConsumerWidget {
                 ),
                 Container(
                   width: 50,
-                  height: 20,
+                  height: 50,
                   //  color: FSColors.fuxiaFSColor,
                   child: TextButton(
                       style: ButtonStyle(
