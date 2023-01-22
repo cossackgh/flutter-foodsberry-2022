@@ -1,17 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:foodsberrymobile/store/global/banners/banners.dart';
 import 'package:foodsberrymobile/store/global/favorites/favorites.dart';
 import 'package:foodsberrymobile/store/global/news/news.dart';
 import 'package:foodsberrymobile/store/global/products/product_filter.dart';
-import 'package:foodsberrymobile/store/global/products/products.dart';
 import 'package:foodsberrymobile/store/global/user/user.dart';
 import 'package:foodsberrymobile/transport/api/news.dart';
 import 'package:foodsberrymobile/views/pages/home/widgets/image-button.dart';
 import 'package:foodsberrymobile/views/pages/home/widgets/title-block.dart';
 import 'package:foodsberrymobile/views/pages/news/index.dart';
-import 'package:foodsberrymobile/views/pages/product/widgets/card-product.dart';
 import 'package:foodsberrymobile/views/widgets/carousel-slider.dart';
 import 'package:foodsberrymobile/views/widgets/drawer.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -35,12 +33,22 @@ class HomePage extends ConsumerWidget {
       print('likeData = $likeData');
       return Scaffold(
           appBar: AppBar(
+            systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: Colors.white,
+
+              statusBarIconBrightness:
+                  Brightness.dark, // For Android (dark icons)
+              statusBarBrightness: Brightness.light, // For iOS (dark icons)
+            ),
             foregroundColor: Colors.black54,
+            //shadowColor: Colors.red,
+            surfaceTintColor: Colors.red,
+
             actions: [
               IconButton(
                 color: Colors.black54,
                 icon: const Icon(Icons.search),
-                tooltip: 'Open shopping cart',
+                tooltip: 'Поиск',
                 onPressed: () {
                   // handle the press
                 },

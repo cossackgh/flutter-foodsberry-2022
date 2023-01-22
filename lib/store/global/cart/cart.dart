@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:foodsberrymobile/store/global/products/products.dart';
 import 'package:foodsberrymobile/store/global/user/user.dart';
 import 'package:hive/hive.dart';
@@ -7,6 +8,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cart.freezed.dart';
 part 'cart.g.dart';
+
+final StateProvider<Cart?> listCartState = StateProvider((ref) => null);
 
 /*
 *HIVE PART

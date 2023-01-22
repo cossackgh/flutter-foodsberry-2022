@@ -168,7 +168,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   } */
 
   Future<void> getCartHome() async {
-    cart = await getCart();
+    ref.read(listCartState.state).state = (await getCart())!;
 
     ref.read(userState.state).state = await getUser();
     ref.read(authState.state).state = isLogin();

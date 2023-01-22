@@ -47,6 +47,55 @@ class Counter extends StateNotifier<int> {
   }
 }
 
+class ProductPageId extends StatelessWidget {
+  const ProductPageId({Key? key, this.idProduct}) : super(key: key);
+  final int? idProduct;
+/*   int? startCountM = dataProduct!.productInCart ?? 0;
+    int? plusLimitM =
+        (dataProduct!.rest! / dataProduct!.multiplier!).round() <= 99
+            ? (dataProduct!.rest! / dataProduct!.multiplier!).round()
+            : 99;
+    final ScrollController _controllerOne = ScrollController();
+    final StateProvider<List<Sku?>?> counterSKU =
+        StateProvider((ref) => dataProduct!.sku);
+    late final TabContainerController _controller;
+    _controller = TabContainerController(length: 2);
+    print('counterSKU ==> $startCountM');
+    print(ref.read(counterSKU.state).toString()); */
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          foregroundColor: Colors.black54,
+          actions: [
+            IconButton(
+              color: Colors.black54,
+              icon: const Icon(Icons.search),
+              tooltip: 'Поиск',
+              onPressed: () {
+                // handle the press
+              },
+            ),
+          ],
+          elevation: 4,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: Text('ТОВАР'),
+        ),
+        body: Consumer(builder: (context, ref, _) {
+          //final _countSKU = ref.watch(counterSKU.state).state;
+
+          final popularData = ref.watch(listFilterPopular.state).state;
+          return SingleChildScrollView(
+              child: Container(
+                  child: Center(
+            child: Text('Товар ID $idProduct'),
+          )));
+        }));
+  }
+}
+
 class ProductPage extends ConsumerWidget {
   const ProductPage({Key? key, this.dataProduct}) : super(key: key);
   final Products? dataProduct;
@@ -452,7 +501,7 @@ class ProductPage extends ConsumerWidget {
                         indexTab: 1,
                       )
                     : Container(),
-                popularData!.isNotEmpty
+                popularData.isNotEmpty
                     ? ConstrainedBox(
                         constraints: const BoxConstraints(
                             minWidth: double.infinity, maxHeight: 400),

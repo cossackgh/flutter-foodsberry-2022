@@ -6,8 +6,10 @@ import 'package:foodsberrymobile/store/global/banners/banners.dart';
 import 'package:foodsberrymobile/store/global/products/product_images.dart';
 import 'package:foodsberrymobile/store/global/products/products.dart';
 import 'package:foodsberrymobile/store/global/theme.dart';
+import 'package:foodsberrymobile/views/pages/product/index.dart';
 import 'package:foodsberrymobile/views/pages/product/widgets/card-product.dart';
 import 'package:foodsberrymobile/views/pages/product/widgets/card-product2.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class FSCarouselSlider extends StatelessWidget {
   const FSCarouselSlider({Key? key, this.listItem, this.aspectRatio = 16 / 9})
@@ -224,52 +226,42 @@ class FSCarouselSliderAdvert extends StatelessWidget {
       items: listItem != null
           ? listItem!
               .map((item) => SizedBox(
-                  height: 300,
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Container(
-                      padding: isBorder
-                          ? const EdgeInsets.all(2)
-                          : const EdgeInsets.all(0),
-                      decoration: BoxDecoration(
-                          color: isBorder
-                              ? const Color.fromARGB(255, 33, 150, 56)
-                              : const Color.fromARGB(255, 255, 255, 255),
-                          borderRadius: isBorder
-                              ? const BorderRadius.all(Radius.circular(10))
-                              : const BorderRadius.all(Radius.circular(0)),
-                          border: Border.all(
-                            color: isBorder
-                                ? const Color.fromARGB(255, 33, 150, 56)
-                                : const Color.fromARGB(255, 255, 255, 255),
-                          )),
-                      alignment: Alignment.topCenter,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: Image.network(
-                            item.image!,
-                            height: 300,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Image.asset(
+                    height: 300,
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: GestureDetector(
+                      child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: LayoutBuilder(builder: (_, constraints) {
+                            return CachedNetworkImage(
+                              imageUrl: item.image!,
+                              fit: BoxFit.contain,
+                              width: constraints.maxWidth - 10,
+                              height: constraints.maxWidth - 10,
+                              placeholder: (context, url) => const Center(
+                                child: SizedBox(
+                                    width: 30,
+                                    height: 30,
+                                    child: CircularProgressIndicator()),
+                              ),
+                              errorWidget: (context, url, error) => Image.asset(
                                   'assets/images/empty-image.jpg',
-                                  fit: BoxFit.cover);
-                            },
-                            loadingBuilder: (BuildContext context, Widget child,
-                                ImageChunkEvent? loadingProgress) {
-                              if (loadingProgress == null) {
-                                return child;
-                              }
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  value: loadingProgress.expectedTotalBytes !=
-                                          null
-                                      ? loadingProgress.cumulativeBytesLoaded /
-                                          loadingProgress.expectedTotalBytes!
-                                      : null,
-                                ),
-                              );
-                            },
-                          )))))
+                                  fit: BoxFit.cover),
+                            );
+                          })),
+                      onTap: () => pushNewScreen(
+                        context,
+                        screen: ProductPageId(idProduct: item.id),
+                        withNavBar: true, // OPTIONAL VALUE. True by default.
+                        pageTransitionAnimation:
+                            PageTransitionAnimation.slideRight, // OPTIONAL
+                      ),
+
+                      /* {
+                              GoRouter.of(context).go(
+                                  '/product/' + dataCardProduct!.id.toString());
+                            }, */
+                    ),
+                  ))
               .toList()
           : list
               .map((item) => Container(
